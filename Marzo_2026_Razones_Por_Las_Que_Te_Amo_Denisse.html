@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para Denisse ❤️‍🩄1�7 De Santiago</title>
+
+<style>
+
+/* ---------- GENERAL ---------- */
+
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+color:white;
+text-align:center;
+overflow-x:hidden;
+transition:0.5s;
+}
+
+.dark{
+background:#111;
+}
+
+/* ---------- LOGIN ---------- */
+
+#login{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+input{
+padding:14px;
+border:none;
+border-radius:10px;
+margin:10px;
+font-size:16px;
+width:200px;
+}
+
+button{
+padding:12px 22px;
+border:none;
+border-radius:25px;
+background:white;
+color:#ff4b6e;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+/* ---------- HERO ---------- */
+
+.hero{
+padding:40px;
+}
+
+.hero h1{
+font-size:3em;
+}
+
+/* ---------- CONTADOR ---------- */
+
+#contador{
+font-size:22px;
+margin-top:10px;
+}
+
+/* ---------- CORAZON GIGANTE ---------- */
+
+.bigHeart{
+font-size:130px;
+cursor:pointer;
+animation:beat 1s infinite;
+}
+
+@keyframes beat{
+0%{transform:scale(1)}
+50%{transform:scale(1.25)}
+100%{transform:scale(1)}
+}
+
+/* ---------- RAZONES ---------- */
+
+.container{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+.reason{
+
+background:rgba(255,255,255,0.25);
+margin:10px;
+padding:15px;
+border-radius:15px;
+backdrop-filter:blur(10px);
+transition:0.3s;
+cursor:pointer;
+
+}
+
+.reason:hover{
+transform:scale(1.05);
+}
+
+/* ---------- CARTA ---------- */
+
+.letter{
+
+background:#fff;
+color:#333;
+padding:40px;
+border-radius:10px;
+max-width:700px;
+margin:60px auto;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+font-family:"Georgia",serif;
+line-height:1.6;
+text-align:left;
+white-space:pre-line;
+
+}
+
+/* ---------- CORAZONES ---------- */
+
+.heart{
+
+position:fixed;
+bottom:-30px;
+font-size:20px;
+pointer-events:none;
+opacity:0.6;
+z-index:-1;
+
+animation:float 7s linear infinite;
+
+}
+
+@keyframes float{
+
+0%{transform:translateY(0)}
+100%{transform:translateY(-120vh)}
+
+}
+
+/* ---------- BOTONES ---------- */
+
+.topButtons{
+
+position:fixed;
+top:10px;
+right:10px;
+
+}
+
+/* ---------- FUEGOS ---------- */
+
+canvas{
+
+position:fixed;
+top:0;
+left:0;
+pointer-events:none;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- LOGIN -->
+
+<div id="login">
+
+<h2>💖 Página especial 💖</h2>
+<h2> ❤️‍🩹Echa Por Santiago Con Amor❤️‍🩄1�7 </h2>
+<h3> Pon La Contraseña Correcta </h3>
+<h4> Pista: 28 </h4>
+
+<input id="pass" placeholder="Fecha">
+
+<button onclick="check()">Entrar</button>
+
+<p id="error"></p>
+
+</div>
+
+<!-- PAGINA -->
+
+<div id="page" style="display:none">
+
+<div class="topButtons">
+
+<button onclick="toggleDark()">🌙</button>
+
+</div>
+
+<div class="hero">
+
+<h1>Para Denisse ❤️</h1>
+
+<p>100 razones por las que te amo</p>
+
+<div id="contador"></div>
+
+<div class="bigHeart" onclick="clickHeart()">❤️</div>
+
+<p>Tócalo varias veces...</p>
+
+<button id="secretBtn" onclick="window.location='Secreto_Razones_Por_Las_Que_Te_Amo_Denisse.html'" style="display:none">Entrar a página secreta</button>
+
+</div>
+
+<div class="container">
+
+<h2>💞 Mis 100 razones 💞</h2>
+
+<div id="reasons"></div>
+
+<h2>💌 Carta para ti</h2>
+
+<div class="letter" id="carta"></div>
+
+</div>
+
+</div>
+
+<audio autoplay loop>
+
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_0c61b8c05e.mp3">
+
+</audio>
+
+<canvas id="fireworks"></canvas>
+
+<script>
+
+/* PASSWORD */
+
+function check(){
+
+let p=document.getElementById("pass").value;
+
+if(p==="28/12/2025"){
+
+login.style.display="none";
+page.style.display="block";
+
+startFireworks();
+
+}else{
+
+error.innerText="Fecha incorrecta";
+
+}
+
+}
+
+/* CONTADOR */
+
+function updateTimer(){
+
+let start=new Date("2025-12-28T22:00:00");
+
+let now=new Date();
+
+let diff=now-start;
+
+let days=Math.floor(diff/(1000*60*60*24));
+
+let hours=Math.floor((diff/(1000*60*60))%24);
+
+let minutes=Math.floor((diff/(1000*60))%60);
+
+let seconds=Math.floor((diff/1000)%60);
+
+contador.innerText=
+
+days+" días "+hours+" horas "+minutes+" minutos "+seconds+" segundos ❤️";
+
+}
+
+setInterval(updateTimer,1000);
+
+/* MODO OSCURO */
+
+function toggleDark(){
+
+document.body.classList.toggle("dark");
+
+}
+
+/* 100 RAZONES */
+
+const reasons=[
+
+"💖 Porque tu sonrisa me hace feliz",
+"🌹 Porque eres muy especial para mí",
+"✄1�7 Porque siempre pienso en ti",
+"💘 Porque contigo todo es mejor",
+"🌸 Porque me encanta tu forma de ser",
+"🌷 Porque me haces sonreír",
+"💓 Porque eres única",
+"💞 Porque tu risa es hermosa",
+"🌺 Porque me encanta hablar contigo",
+"💗 Porque siempre quiero verte",
+"💝 Porque eres increíble",
+"🌼 Porque haces mi día mejor",
+"🌟 Porque tu personalidad es hermosa",
+"💐 Porque me haces sentir bien",
+"🌻 Porque tu forma de pensar me gusta",
+"💎 Porque eres muy especial",
+"💫 Porque contigo soy feliz",
+"🌙 Porque siempre estás en mi mente",
+"⭄1�7 Porque iluminas mis días",
+"🍀 Porque eres mi suerte",
+"🔥 Porque haces latir mi corazón",
+"🌈 Porque haces mi mundo colorido",
+"💍 Porque eres importante para mí",
+"🍓 Porque me encanta tu voz",
+"🎶 Porque hablar contigo es bonito",
+"🌊 Porque me das tranquilidad",
+"🍫 Porque eres dulce",
+"🎀 Porque eres linda",
+"🌠 Porque haces mis noches especiales",
+"🕊︄1�7 Porque me haces sentir en paz",
+"🎆 Porque iluminas mi vida",
+"🍬 Porque eres adorable",
+"🎵 Porque tu risa es música",
+"💡 Porque me inspiras",
+"🌍 Porque haces mi mundo mejor",
+"📖 Porque quiero escribir historias contigo",
+"🧸 Porque eres tierna",
+"🍯 Porque eres dulce conmigo",
+"🍃 Porque me das calma",
+"🌞 Porque iluminas mis días",
+"🎁 Porque eres un regalo",
+"💌 Porque me encanta hablar contigo",
+"🎈 Porque me haces feliz",
+"🌹 Porque eres hermosa",
+"🦋 Porque haces mi vida bonita",
+"🌸 Porque eres especial",
+"💞 Porque me gustas mucho",
+"🎨 Porque pintas mi vida de colores",
+"🌟 Porque brillas",
+"🎇 Porque haces mi vida emocionante",
+"🌙 Porque me gusta pensar en ti",
+"🍀 Porque tengo suerte de conocerte",
+"💖 Porque me encantas",
+"🌺 Porque eres increíble",
+"🌼 Porque haces mis días mejores",
+"🎵 Porque tu voz me gusta",
+"🌻 Porque eres única",
+"💫 Porque me inspiras",
+"🌈 Porque haces mi vida bonita",
+"🌹 Porque eres maravillosa",
+"✄1�7 Porque eres especial",
+"💝 Porque eres importante",
+"🍓 Porque me haces sonreír",
+"🎀 Porque eres adorable",
+"🌙 Porque siempre pienso en ti",
+"🌞 Porque iluminas mi vida",
+"🍫 Porque eres dulce",
+"🧸 Porque eres tierna",
+"💗 Porque eres hermosa",
+"🌸 Porque eres única",
+"🌟 Porque me inspiras",
+"💞 Porque eres increíble",
+"🌼 Porque haces mi mundo mejor",
+"🎶 Porque hablar contigo es bonito",
+"🍀 Porque me haces feliz",
+"🌺 Porque eres maravillosa",
+"💖 Porque me encantas",
+"🌹 Porque me gustas mucho",
+"✄1�7 Porque eres especial",
+"🌈 Porque haces mi mundo mejor",
+"💌 Porque hablar contigo me gusta",
+"🌻 Porque eres única",
+"🎁 Porque eres un regalo",
+"💗 Porque me haces feliz",
+"🌙 Porque me gusta pensar en ti",
+"🌟 Porque iluminas mis días",
+"🍓 Porque eres dulce",
+"🎀 Porque eres adorable",
+"🌸 Porque eres especial",
+"🌼 Porque haces mi vida mejor",
+"💞 Porque eres increíble",
+"🌺 Porque eres maravillosa",
+"✄1�7 Porque eres única",
+"💖 Porque te amo",
+"🌹 Porque siempre te elegiría",
+"💓 Porque eres lo mejor",
+"💘 Porque haces latir mi corazón",
+"💗 Porque te quiero mucho",
+"💞 Porque eres mi persona favorita",
+"❤️ Porque te amo muchísimo"
+
+];
+
+const reasonsDiv=document.getElementById("reasons");
+
+reasons.forEach(r=>{
+
+let div=document.createElement("div");
+
+div.className="reason";
+
+div.innerText=r;
+
+div.onclick=explode;
+
+reasonsDiv.appendChild(div);
+
+});
+
+/* EXPLOSION */
+
+function explode(e){
+
+for(let i=0;i<10;i++){
+
+let h=document.createElement("div");
+
+h.innerHTML="💖";
+
+h.style.position="absolute";
+
+h.style.left=e.pageX+"px";
+h.style.top=e.pageY+"px";
+
+document.body.appendChild(h);
+
+setTimeout(()=>h.remove(),800);
+
+}
+
+}
+
+/* CORAZON 28 CLICKS */
+
+let clicks=0;
+
+function clickHeart(){
+
+clicks++;
+
+if(clicks>=28){
+
+secretBtn.style.display="inline-block";
+
+}
+
+}
+
+/* CORAZONES FLOTANDO */
+
+function hearts(){
+
+let h=document.createElement("div");
+
+h.className="heart";
+
+h.innerHTML="💗";
+
+h.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(h);
+
+setTimeout(()=>h.remove(),7000);
+
+}
+
+setInterval(hearts,800);
+
+/* CARTA TYPEWRITER */
+
+let text=`Querida Denisse,
+
+Quería hacer algo especial para ti.
+Algo que no fuera solo palabras,
+sino algo que pudieras ver y recordar.
+
+Esta página tiene 100 razones,
+pero la verdad es que existen muchas más.
+
+Cada día que pasa
+me doy cuenta de lo especial que eres.
+
+Tu sonrisa,
+tu forma de ser,
+y todo lo que te hace única.
+
+Gracias por existir.
+
+Con cariño ❤️`; Santiago 
+
+let i=0;
+
+function type(){
+
+if(i<text.length){
+
+carta.innerHTML+=text.charAt(i);
+
+i++;
+
+setTimeout(type,40);
+
+}
+
+}
+
+type();
+
+/* FUEGOS */
+
+function startFireworks(){
+
+const canvas=document.getElementById("fireworks");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+
+function fire(){
+
+for(let i=0;i<120;i++){
+
+particles.push({
+
+x:canvas.width/2,
+y:canvas.height/2,
+vx:(Math.random()-0.5)*6,
+vy:(Math.random()-0.5)*6,
+life:100
+
+});
+
+}
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p=>{
+
+p.x+=p.vx;
+p.y+=p.vy;
+p.life--;
+
+ctx.fillStyle="white";
+ctx.fillRect(p.x,p.y,2,2);
+
+});
+
+particles=particles.filter(p=>p.life>0);
+
+requestAnimationFrame(animate);
+
+}
+
+fire();
+animate();
+
+}
+
+</script>
+
+</body>
+</html>
